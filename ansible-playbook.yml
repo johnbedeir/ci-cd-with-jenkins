@@ -1,0 +1,10 @@
+---
+- name: "Build a container with ansible"
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: build docker image using the Dockerfile
+      command: docker build -t my-project-image .
+
+    - name: create container using my-project-image
+      command: docker run -d -p 8099:80 --name my-project-container my-project-image
